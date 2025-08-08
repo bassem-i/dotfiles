@@ -129,12 +129,11 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 ## ---------------------------------------------------------------------------------------
-## Klarna specific config.
+## Device specific config.
 
 if [ -d "~/Workspace/dotfiles/devices/$(hostname)" ]; then
   source ~/Workspace/dotfiles/devices/$(hostname)/.zshrc
 
-  # Copy Klarna .gitconfig to /generated/.gitconfig
   mkdir -p ~/Workspace/dotfiles/generated
   cp -f ~/Workspace/dotfiles/devices/$(hostname)/.gitconfig ~/Workspace/dotfiles/generated/.gitconfig
 fi
