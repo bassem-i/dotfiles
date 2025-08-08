@@ -1,0 +1,9 @@
+# Include dynamically generated config based on current machine.
+[include]
+    path = ~/Workspace/dotfiles/generated/.gitconfig
+
+# Personal git configuration.
+[alias]
+	st = status
+	co = checkout
+	parent = merge-base origin/main HEAD
