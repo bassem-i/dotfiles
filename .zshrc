@@ -141,12 +141,14 @@ fi
 ## ---------------------------------------------------------------------------------------
 ## Automatically run tmux on init
 
-if [ -z "$TMUX" ]; then
-  last_tmux_session=$(tmux list-sessions 2>/dev/null | tail -n 1 | awk -F: '{print $1}')
+if command -v tmux > /dev/null; then
+  if [ -z "$TMUX" ]; then
+    last_tmux_session=$(tmux list-sessions 2>/dev/null | tail -n 1 | awk -F: '{print $1}')
 
-  if [ -n "$last_tmux_session" ]; then
-    exec tmux attach-session -t "$last_tmux_session"
-  else
-    exec tmux
+    if [ -n "$last_tmux_session" ]; then
+      exec tmux attach-session -t "$last_tmux_session"
+    else
+      exec tmux
+    fi
   fi
 fi
