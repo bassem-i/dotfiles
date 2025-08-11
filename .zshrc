@@ -131,7 +131,7 @@ bindkey '^[[B' history-search-forward
 ## ---------------------------------------------------------------------------------------
 ## Device specific config.
 
-if [ -d "~/Workspace/dotfiles/devices/$(hostname)" ]; then
+if [ -d ~/Workspace/dotfiles/devices/$(hostname) ]; then
   source ~/Workspace/dotfiles/devices/$(hostname)/.zshrc
 
   mkdir -p ~/Workspace/dotfiles/generated
