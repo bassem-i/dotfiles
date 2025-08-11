@@ -1,4 +1,4 @@
-# Include dynamically generated config based on current machine.
+# Include dynamically generated config based on current device.
 [include]
     path = ~/Workspace/dotfiles/generated/.gitconfig
 

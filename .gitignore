@@ -1,3 +1,11 @@
 .DS_Store
-generated
+
+# Devices folder contains device-specific dotfiles
 devices
+
+# Generated folder contains device-specific 
+generated
+
+# Tmux plugins can be installed using Ctrl+A then Shift+I
+.config/tmux/plugins
+
