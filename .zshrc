@@ -1,3 +1,5 @@
+export LANG=en_US.UTF-8
+
 ## ---------------------------------------------------------------------------------------
 ## Added by oh-my-zsh installer
 
@@ -104,6 +106,25 @@ source $ZSH/oh-my-zsh.sh
 ## Added by Bassem
 ## Don't add PATH related config here.
 
+
+# Configure the promt
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%F{yellow}%b%f'
+last_status() {
+  local last_cmd_status="$?"
+  if [[ $last_cmd_status -ne 0 ]]; then
+    echo "%F{red}[$last_cmd_status]%f "
+  fi
+}
+show_git_branch() {
+  if [[ -n "${vcs_info_msg_0_}" ]]; then
+    echo " [${vcs_info_msg_0_}]"
+  fi
+}
+PROMPT='$(last_status)%F{blue}%~%f$(show_git_branch)
+$ '
+
 alias ls="eza -la --icons=always"
 alias cd-w="cd ~/Workspace"
 
@@ -152,3 +173,7 @@ if command -v tmux > /dev/null; then
     fi
   fi
 fi
+
+source ~/.keprc
+
+export PATH=$HOME/.local/bin:$PATH
