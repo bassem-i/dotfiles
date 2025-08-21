@@ -7,6 +7,7 @@ brew install wezterm
 brew install tmux
 brew install neovim
 brew install ripgrep
+brew install fd
 brew install fzf
 brew install eza
 brew install llm
