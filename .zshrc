@@ -75,7 +75,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git z zsh-syntax-highlighting zsh-autosuggestions vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 ## Added by Bassem
 ## Don't add PATH related config here.
 
+# Change cursor based on VI mode. (Depends on vi-mode plugin) 
+VI_MODE_SET_CURSOR=true
 
 # Configure the promt
 autoload -Uz vcs_info
