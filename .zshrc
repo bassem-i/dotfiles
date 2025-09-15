@@ -130,7 +130,9 @@ $ '
 alias ls="eza -la --icons=always"
 alias cd-w="cd ~/Workspace"
 
-## Terminal
+## Aliases 
+alias n="nvim ."
+alias lg="lazygit"
 alias refresh-terminal="source ~/.zshrc && source ~/.zshenv"
 alias clear="clear && refresh-terminal"
 alias git-hash="git rev-parse HEAD | tee /dev/tty | pbcopy"
