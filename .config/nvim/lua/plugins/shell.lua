@@ -10,7 +10,7 @@ return {
 
   -- Mason LSP installer, add bashls
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed or {}, { "bashls" })
     end,
@@ -18,7 +18,7 @@ return {
 
   -- Optionally, add formatters and linters (shfmt, shellcheck)
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, { "shellcheck" })
     end,
