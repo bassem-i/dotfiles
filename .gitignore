@@ -6,3 +6,7 @@ generated
 tmux/.config/tmux/plugins
 # Lazygit state
 lazygit/.config/lazygit/state.yml
+# Newsboat state
+newsboat/.config/newsboat/cache.db
+newsboat/.config/newsboat/queue
+newsboat/.config/newsboat/urls

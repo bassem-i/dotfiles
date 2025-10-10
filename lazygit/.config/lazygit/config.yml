@@ -8,9 +8,9 @@ gui:
 git:
   autoFetch: false
   fetchAll: false # only fetch current branch
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --syntax-theme base16-256
+  # paging:
+  #   colorArg: always
+  #   pager: delta --dark --paging=never --syntax-theme base16-256
   commit:
     autoWrapCommitMessage: false
 os:
