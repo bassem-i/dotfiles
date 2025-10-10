@@ -109,7 +109,7 @@ source $ZSH/oh-my-zsh.sh
 # Change cursor based on VI mode. (Depends on vi-mode plugin) 
 VI_MODE_SET_CURSOR=true
 
-# Configure the promt
+# Configure the prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%F{yellow}%b%f'
@@ -178,6 +178,6 @@ if command -v tmux > /dev/null; then
   fi
 fi
 
-source ~/.keprc
+# source ~/.keprc
 
 export PATH=$HOME/.local/bin:$PATH
