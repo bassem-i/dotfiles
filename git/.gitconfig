@@ -1,6 +1,6 @@
 # Include dynamically generated config based on current device.
 [include]
-    path = ~/Workspace/dotfiles/generated/.gitconfig
+  path = ~/Workspace/dotfiles/generated/.gitconfig
 
 # Personal git configuration.
 [alias]
@@ -9,4 +9,15 @@
 	parent = merge-base origin/main HEAD
 
 [core]
+  pager = delta
 	excludesfile = /Users/bassem.ibrahim/.gitignore_global
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+  conflictStyle = zdiff3
