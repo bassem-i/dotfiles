@@ -4,7 +4,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       -- Ensure bash (and optionally fish, etc.) parsers are installed
-      vim.list_extend(opts.ensure_installed, { "bash" })
+      vim.list_extend(opts.ensure_installed, { "bash", "ruby" })
     end,
   },
 

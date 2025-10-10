@@ -5,5 +5,5 @@ devices
 generated
 
 # Tmux plugins can be installed using Ctrl+A then Shift+I
-.config/tmux/plugins
+tmux/.config/tmux/plugins
 

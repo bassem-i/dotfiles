@@ -134,8 +134,10 @@ alias cd-w="cd ~/Workspace"
 alias n="nvim ."
 alias lg="lazygit"
 alias refresh-terminal="source ~/.zshrc && source ~/.zshenv"
+alias refresh-stow="cd ~/Workspace/dotfiles && stow -t $HOME -S nvim tmux wezterm zsh git aider"
 alias clear="clear && refresh-terminal"
 alias git-hash="git rev-parse HEAD | tee /dev/tty | pbcopy"
+alias ai="aider --config ~/.config/.aider.conf.yml"
 
 # Init homebrew
 eval "$('/opt/homebrew/bin/brew' shellenv)"
@@ -177,7 +179,5 @@ if command -v tmux > /dev/null; then
     fi
   fi
 fi
-
-# source ~/.keprc
 
 export PATH=$HOME/.local/bin:$PATH
