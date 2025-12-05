@@ -1,18 +1,16 @@
 #!/bin/bash
 
 # Install the following using brew:
-brew install git
-brew install zsh
-brew install wezterm
-brew install tmux
-brew install neovim
-brew install ripgrep
-brew install fd
-brew install fzf
-brew install eza
-brew install llm
+brew install aider
+brew install eza bat tree
+brew install dust
+brew install fd fzf ripgrep
+brew install git git-delta lazygit
+brew install neovim luarocks tree-sitter-cli
 brew install stow
-brew install node
+brew install wezterm tmux
+brew install zsh zsh-completions
+brew install gs
 
 # Install zsh-autosuggestions & zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions

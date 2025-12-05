@@ -131,12 +131,11 @@ alias ls="eza -la --icons=always"
 alias cd-w="cd ~/Workspace"
 
 ## Aliases 
-alias n="nvim ."
+alias n="nvim"
 alias lg='lazygit -ucd ~/.config/lazygit'
-alias ai="aider --config ~/.config/.aider.conf.yml"
+alias ai="aider --config ~/.config/.aider.conf.yml --chat-mode ask"
 alias refresh-terminal="source ~/.zshrc && source ~/.zshenv"
 alias refresh-stow="cd ~/Workspace/dotfiles && stow -t $HOME -S aider git lazygit nvim tmux wezterm zsh"
-alias clear="clear && refresh-terminal"
 alias git-hash="git rev-parse HEAD | tee /dev/tty | pbcopy"
 
 # Init homebrew
