@@ -25,7 +25,7 @@ return {
   },
   opts = {
     options = {
-      use_as_default_explorer = false,
+      use_as_default_explorer = true,
     },
   },
 }
