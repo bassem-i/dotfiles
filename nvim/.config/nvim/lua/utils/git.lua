@@ -85,6 +85,19 @@ function M.get_line_on_remote()
     local git_remote_url_with_line = github_url .. "/blob/" .. branch .. "/" .. file_path .. "#L" .. line_number
     return git_remote_url_with_line
   end
+
+  -- Remote: klarna_225322@klarna.ghe.com:klarna/klarna-clients.git
+  -- Example: https://klarna.ghe.com/klarna/klarna-clients/blob/3e333dea6a9348f86e347c65a4379e9ec5f52d24/clients/packages/features/banking-interest-summary/hooks/mock/fixtures.ts#L62
+  if string.find(remote, "ghe.com") then
+    local user, repo = remote:match("ghe.com:(.+)/(.+).git")
+    local ghe_url = "https://klarna.ghe.com/" .. user .. "/" .. repo
+    local branch = "main"
+    if branch == nil then
+      branch = "main"
+    end
+    local git_remote_url_with_line = ghe_url .. "/blob/" .. branch .. "/" .. file_path .. "#L" .. line_number
+    return git_remote_url_with_line
+  end
 end
 
 return M

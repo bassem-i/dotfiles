@@ -2,7 +2,7 @@
 
 WORKTREE_ROOT=~/Klarna/klarna-clients-worktree
 KLARNA_APP_CLIENTS=~/Klarna/klarna-clients
-CODE_WORKSPACES_DIR=~/Workspace/code-workspaces/worktree
+CODE_WORKSPACES_DIR=~/Workspace/code-workspaces/Worktree
 
 # Create new git worktree if it doesn't exist.
 function create_git_worktree() {
@@ -96,7 +96,7 @@ echo "Branch name: $branch_name"
 [ -n "$branch_name" ] || return 1
 
 create_git_worktree $branch_name
-# create_code_workspace_file $branch_name
+create_code_workspace_file $branch_name
 create_or_attach_tmux_session $branch_name
 
 echo "Done."
