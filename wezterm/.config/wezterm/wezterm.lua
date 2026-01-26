@@ -16,4 +16,10 @@ config.font_size = 22.0
 -- Disable tab bar
 config.enable_tab_bar = false
 
+-- https://wezterm.org/config/lua/config/front_end.html
+config.front_end = "OpenGL"
+
+-- Attach to existing tmux session if available automatically
+config.default_prog = { "/opt/homebrew/bin/tmux", "attach-session" }
+
 return config

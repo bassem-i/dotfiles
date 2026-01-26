@@ -132,6 +132,7 @@ alias cd-w="cd ~/Workspace"
 
 ## Aliases 
 alias n="nvim"
+alias t="tmux attach-session"
 alias lg='lazygit -ucd ~/.config/lazygit'
 alias ai="aider --config ~/.config/.aider.conf.yml --chat-mode ask"
 alias refresh-terminal="source ~/.zshrc && source ~/.zshenv"
@@ -162,21 +163,6 @@ if [ -d ~/Workspace/dotfiles/devices/$(hostname) ]; then
 
   mkdir -p ~/Workspace/dotfiles/generated
   cp -f ~/Workspace/dotfiles/devices/$(hostname)/.gitconfig ~/Workspace/dotfiles/generated/.gitconfig
-fi
-
-## ---------------------------------------------------------------------------------------
-## Automatically run tmux on init
-
-if command -v tmux > /dev/null; then
-  if [ -z "$TMUX" ]; then
-    last_tmux_session=$(tmux list-sessions 2>/dev/null | tail -n 1 | awk -F: '{print $1}')
-
-    if [ -n "$last_tmux_session" ]; then
-      exec tmux attach-session -t "$last_tmux_session"
-    else
-      exec tmux
-    fi
-  fi
 fi
 
 export PATH=$HOME/.local/bin:$PATH
