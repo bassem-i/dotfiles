@@ -25,7 +25,7 @@ function git-list-worktree() {
   # Use fzf to select a worktree
   local selected=$(echo "$worktree_info" | fzf \
     --prompt="Select worktree > " \
-    --header="Press ENTER to switch, ESC to cancel" \
+    --header="Press ENTER to copy branch name, ESC to cancel" \
     --preview="echo {2} && echo && git -C {2} status -sb 2>/dev/null || echo 'Not available'" \
     --preview-window=right:50% \
     --delimiter="\t" \
@@ -39,19 +39,8 @@ function git-list-worktree() {
 
   local branch_name=$(echo "$selected" | cut -f1)
 
-  # Switch to or create tmux session for the selected worktree
-  if tmux has-session -t "$branch_name" 2>/dev/null; then
-    tmux switch-client -t "$branch_name"
-  else
-    local worktree_path="$WORKTREE_ROOT/$branch_name"
-    if [ -d "$worktree_path" ]; then
-      tmux new-session -d -s "$branch_name" -c "$worktree_path"
-      tmux switch-client -t "$branch_name"
-    else
-      echo "Worktree directory not found: $worktree_path"
-      return 1
-    fi
-  fi
+  echo -n "$branch_name" | pbcopy
+  tmux display-message "Copied: $branch_name"
 }
 
 git-list-worktree

@@ -17,19 +17,19 @@ function create_git_worktree() {
 
     # Create the git worktree
     pushd $MAIN_REPO
-    git pull origin main
+    git pull --no-progress origin main
 
     if git show-ref --verify --quiet "refs/heads/$branch_name"; then
-      git worktree add -f $worktree_dir $branch_name
+      git worktree add -q -f $worktree_dir $branch_name
     else
-      git worktree add -f $worktree_dir -b $branch_name
+      git worktree add -q -f $worktree_dir -b $branch_name
     fi
     popd
 
     # Direnv allow
     ( cd "$worktree_dir" && direnv allow )
-    ( cd "$worktree_dir/clients" && direnv allow )
   fi
+  return 0
 }
 
 # Create a tmux session for the git worktree branch
@@ -92,11 +92,23 @@ function create_code_workspace_file() {
 }
 
 local branch_name="$1"
-echo "Branch name: $branch_name"
-[ -n "$branch_name" ] || return 1
+[ -n "$branch_name" ] || exit 1
 
-create_git_worktree $branch_name
+tmux set -g @wt_status "⟳ wt"
+tmux refresh-client -S
+
+local logfile="/tmp/wt-create-${branch_name//\//-}.log"
+exec > "$logfile" 2>&1
+
+echo "Creating worktree: $branch_name..."
+create_git_worktree $branch_name || {
+  tmux set -g @wt_status ""
+  tmux refresh-client -S
+  tmux display-popup -E -w 80% -h 60% "less '$logfile'; rm -f '$logfile'"
+  exit 1
+}
 create_code_workspace_file $branch_name
 create_or_attach_tmux_session $branch_name
-
-echo "Done."
+tmux set -g @wt_status ""
+tmux refresh-client -S
+tmux display-popup -E -w 80% -h 60% "less '$logfile'; rm -f '$logfile'"

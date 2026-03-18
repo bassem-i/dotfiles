@@ -33,9 +33,21 @@ function git-delete-worktree() {
 }
 
 local branch_name="$1"
-echo "Branch name: $branch_name"
-[ -n "$branch_name" ] || return 1
+[ -n "$branch_name" ] || exit 1
 
-git-delete-worktree $branch_name
+tmux set -g @wt_status "⟳ wt"
+tmux refresh-client -S
 
-echo "Done."
+local logfile="/tmp/wt-delete-${branch_name//\//-}.log"
+exec > "$logfile" 2>&1
+
+echo "Deleting worktree: $branch_name..."
+git-delete-worktree $branch_name || {
+  tmux set -g @wt_status ""
+  tmux refresh-client -S
+  tmux display-popup -E -w 80% -h 60% "less '$logfile'; rm -f '$logfile'"
+  exit 1
+}
+tmux set -g @wt_status ""
+tmux refresh-client -S
+tmux display-popup -E -w 80% -h 60% "less '$logfile'; rm -f '$logfile'"
