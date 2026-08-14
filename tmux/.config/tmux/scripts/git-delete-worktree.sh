@@ -9,9 +9,17 @@ function git-delete-worktree() {
   local git_worktree_path="$WORKTREE_ROOT/$branch_name"
   local code_workspace_file="$CODE_WORKSPACES_DIR/$branch_name.code-workspace"
 
-  # Remove the worktree branch (Should delete the worktree directory as well)
+  # Move the worktree directory to the Trash first (instant rename) instead of
+  # letting `git worktree remove` walk and delete every file synchronously.
+  if [ -d "$git_worktree_path" ]; then
+    trash "$git_worktree_path"
+    echo "Worktree directory moved to Trash"
+  fi
+
+  # Directory is gone now, so just prune the stale admin metadata (fast).
   pushd $MAIN_REPO >/dev/null 2>&1
-  git worktree remove $branch_name --force
+  git worktree prune
+  git branch -D "$branch_name"
   popd
 
   # Remove the code workspace file
@@ -24,11 +32,6 @@ function git-delete-worktree() {
   if tmux has-session -t "$branch_name" 2>/dev/null; then
     tmux kill-session -t "$branch_name"
     echo "Tmux session deleted"
-  fi
-
-  if [ -d "$git_worktree_path" ]; then
-    rm -rf "$git_worktree_path"
-    echo "Worktree directory deleted"
   fi
 }
 

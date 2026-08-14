@@ -10,6 +10,9 @@ pushd "$MAIN_REPO" >/dev/null 2>&1 || { echo "Error: Cannot access main repo at 
 echo "Fetching latest origin/main..."
 git fetch origin main --quiet 2>/dev/null
 
+echo "Pruning stale remote-tracking branches..."
+git remote prune origin --quiet 2>/dev/null
+
 # Collect all worktrees excluding main
 worktrees=()
 while IFS= read -r line; do
