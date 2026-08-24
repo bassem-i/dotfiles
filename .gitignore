@@ -6,3 +6,8 @@ generated
 tmux/.config/tmux/plugins
 # Lazygit state
 lazygit/.config/lazygit/state.yml
+
+# Global gitignore blanket-ignores ".claude", but this repo intentionally
+# tracks a claude/.claude package to manage ~/.claude/settings.json via stow
+!/claude/.claude/
+!/claude/.claude/**

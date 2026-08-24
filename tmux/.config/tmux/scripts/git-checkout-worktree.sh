@@ -32,7 +32,8 @@ function create_git_worktree() {
   return 0
 }
 
-# Create a tmux session for the git worktree branch
+# Create a tmux session for the git worktree branch, with a "C" window
+# running claude and a "ZSH" window with a plain shell, both in the worktree dir.
 function create_or_attach_tmux_session() {
   local branch_name="$1"
   local worktree_dir=$WORKTREE_ROOT/$branch_name
@@ -42,7 +43,9 @@ function create_or_attach_tmux_session() {
     tmux switch -t "$branch_name"
   else
     echo "Creating tmux session..."
-    tmux new-session -d -s "$branch_name" -c "$worktree_dir"
+    tmux new-session -d -s "$branch_name" -n "C" -c "$worktree_dir"
+    tmux send-keys -t "$branch_name:C" "claude" Enter
+    tmux new-window -d -t "$branch_name" -n "ZSH" -c "$worktree_dir"
     tmux switch -t "$branch_name"
   fi
 }

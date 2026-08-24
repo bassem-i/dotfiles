@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "slack@claude-plugins-official": true
+  },
+  "promptSuggestionEnabled": false,
+  "tui": "fullscreen",
+  "skipAutoPermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 2
+  }
+}

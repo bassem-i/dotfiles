@@ -136,7 +136,7 @@ alias t="tmux attach-session"
 alias lg='lazygit -ucd ~/.config/lazygit'
 alias ai="aider --config ~/.config/.aider.conf.yml --chat-mode ask"
 alias refresh-terminal="source ~/.zshrc && source ~/.zshenv"
-alias refresh-stow="cd ~/Workspace/dotfiles && stow -t $HOME -S aider git lazygit nvim tmux wezterm zsh"
+alias refresh-stow="cd ~/Workspace/dotfiles && stow -t $HOME -S claude git lazygit nvim tmux wezterm zsh"
 alias git-hash="git rev-parse HEAD | tee /dev/tty | pbcopy"
 
 # Init homebrew

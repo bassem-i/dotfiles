@@ -5,6 +5,7 @@ brew install eza bat tree
 brew install dust
 brew install fd fzf ripgrep
 brew install git git-delta lazygit
+brew install jq
 brew install neovim luarocks tree-sitter-cli
 brew install stow
 brew install wezterm tmux
